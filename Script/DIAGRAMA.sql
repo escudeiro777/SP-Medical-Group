@@ -4,8 +4,6 @@ GO
 USE MEDICALGROUP_SP;
 GO
 
---------------------------------------------------------------ddl--------------------------------------------------------------------
-
 CREATE TABLE tipoUsuario(
  idTipoUsuario TINYINT PRIMARY KEY IDENTITY (1,1),
  nomeTipoUsuario VARCHAR(100) NOT NULL UNIQUE
