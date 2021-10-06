@@ -25,9 +25,9 @@ namespace SP_Medical_Group_webApi.Repositories
             ctx.SaveChanges();
         }
 
-        public Clinica BuscarPorId(int idClinica)
+        public Clinica BuscarPorId(int IdClinica)
         {
-            return ctx.Clinicas.FirstOrDefault(c => c.IdClinica == idClinica);
+            return ctx.Clinicas.FirstOrDefault(c => c.IdClinica == IdClinica);
         }
 
         public void Cadastrar(Clinica novaClinica)

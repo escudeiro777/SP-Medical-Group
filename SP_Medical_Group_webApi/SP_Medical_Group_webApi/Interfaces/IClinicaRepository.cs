@@ -9,7 +9,7 @@ namespace SP_Medical_Group_webApi.Interfaces
     interface IClinicaRepository
     {
         List<Clinica> ListarTodos();
-        Clinica BuscarPorId(int idClinica);
+        Clinica BuscarPorId(int IdClinica);
 
         void Cadastrar(Clinica novaClinica);
 

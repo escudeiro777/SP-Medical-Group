@@ -1,4 +1,5 @@
-﻿using SP_Medical_Group_webApi.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using SP_Medical_Group_webApi.Contexts;
 using SP_Medical_Group_webApi.Domains;
 using SP_Medical_Group_webApi.Interfaces;
 using System;
@@ -14,27 +15,45 @@ namespace SP_Medical_Group_webApi.Repositories
 
         public void AtualizarUrl(int idMedico, Medico medicoAtualizado)
         {
-            throw new NotImplementedException();
+            Medico medicoBuscado = BuscarPorId(idMedico);
+
+            medicoBuscado.IdUsuario = medicoBuscado.IdUsuario;
+            medicoBuscado.IdEspecializacao = medicoAtualizado.IdEspecializacao;
+            medicoBuscado.IdClinica = medicoAtualizado.IdClinica;
+            medicoBuscado.Crm = medicoAtualizado.Crm;
+
+            ctx.Medicos.Update(medicoBuscado);
+
+            ctx.SaveChanges();
         }
 
         public Medico BuscarPorId(int idMedico)
         {
-            throw new NotImplementedException();
+
+            return ctx.Medicos.FirstOrDefault(m => m.IdUsuario == idMedico);
         }
 
-        public void Cadastrar(Medico novaConsulta)
+        public void Cadastrar(Medico novoMedico)
         {
-            throw new NotImplementedException();
+            ctx.Medicos.Add(novoMedico);
+
+            ctx.SaveChanges();
         }
 
         public void Deletar(int idMedico)
         {
-            throw new NotImplementedException();
+            ctx.Medicos.Remove(BuscarPorId(idMedico));
+
+            ctx.SaveChanges();
         }
 
         public List<Medico> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Medicos
+                .Include(m => m.IdClinicaNavigation)
+                .Include(m => m.IdEspecializacaoNavigation)
+                .Include(m => m.IdUsuarioNavigation)
+                .ToList();
         }
     }
 }

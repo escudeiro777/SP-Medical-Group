@@ -10,7 +10,7 @@ namespace SP_Medical_Group_webApi.Interfaces
     {
         List<Medico> ListarTodos();
         Medico BuscarPorId(int idMedico);
-        void Cadastrar(Medico novaConsulta);
+        void Cadastrar(Medico novoMedico);
         void AtualizarUrl(int idMedico, Medico medicoAtualizado);
         void Deletar(int idMedico);
     }

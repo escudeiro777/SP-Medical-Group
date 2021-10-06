@@ -13,27 +13,42 @@ namespace SP_Medical_Group_webApi.Repositories
         MedicalGroupSpContext ctx = new();
         public void AtualizarUrl(int idPaciente, Paciente pacienteAtualizado)
         {
-            throw new NotImplementedException();
+            Paciente pacienteBuscado = BuscarPorId(idPaciente);
+
+            pacienteBuscado.IdUsuario = pacienteBuscado.IdUsuario;
+            pacienteBuscado.DataNasc = pacienteAtualizado.DataNasc;
+            pacienteBuscado.Telefone = pacienteAtualizado.Telefone;
+            pacienteBuscado.Rg = pacienteAtualizado.Rg;
+            pacienteBuscado.Cpf = pacienteAtualizado.Cpf;
+            pacienteBuscado.Endereco = pacienteAtualizado.Endereco;
+
+            ctx.Pacientes.Update(pacienteBuscado);
+
+            ctx.SaveChanges();
         }
 
         public Paciente BuscarPorId(int idPaciente)
         {
-            throw new NotImplementedException();
+            return ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == idPaciente);
         }
 
         public void Cadastrar(Paciente novoPaciente)
         {
-            throw new NotImplementedException();
+            ctx.Pacientes.Add(novoPaciente);
+
+            ctx.SaveChanges();
         }
 
         public void Deletar(int idPaciente)
         {
-            throw new NotImplementedException();
+            ctx.Pacientes.Remove(BuscarPorId(idPaciente));
+
+            ctx.SaveChanges();
         }
 
         public List<Paciente> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Pacientes.ToList();
         }
     }
 }

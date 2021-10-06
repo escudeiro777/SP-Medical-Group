@@ -92,23 +92,54 @@ namespace SP_Medical_Group_webApi.Repositories
                         SituacaoConsulta = c.IdSituacaoConsultaNavigation.SituacaoConsulta
 
                     }
-
                 })
                     .ToList();
             }
 
-            else if(idTipo == 1)
+            else if (idTipo == 1)
             {
-                int idPaciente = pacienteBuscada.IdPaciente;
-                Paciente pacienteBuscada = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == idPaciente);
-                
+                Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == idTipo);
+
+                int idPaciente = pacienteBuscado.IdPaciente;
+
+                return ctx.Consulta.Where(m => m.IdPaciente == idPaciente)
+                    .Select(p => new Consultum()
+                    {
+                        DataConsulta = p.DataConsulta,
+                        IdConsulta = p.IdConsulta,
+                        IdMedicoNavigation = new Medico()
+                        {
+                            Crm = p.IdMedicoNavigation.Crm,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                NomeUsuario = p.IdMedicoNavigation.IdUsuarioNavigation.NomeUsuario,
+                                Email = p.IdMedicoNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdPacienteNavigation = new Paciente()
+                        {
+                            Cpf = p.IdPacienteNavigation.Cpf,
+                            Telefone = p.IdPacienteNavigation.Telefone,
+                            IdUsuarioNavigation = new Usuario()
+                            {
+                                NomeUsuario = p.IdPacienteNavigation.IdUsuarioNavigation.NomeUsuario,
+                                Email = p.IdPacienteNavigation.IdUsuarioNavigation.Email
+                            }
+                        },
+                        IdSituacaoConsultaNavigation = new SituacaoConsultum
+                        {
+                            SituacaoConsulta = p.IdSituacaoConsultaNavigation.SituacaoConsulta
+                        }
+                    })
+                    .ToList();
             }
+            return null;
         }
 
         public List<Consultum> ListarTodos()
         {
             return ctx.Consulta
-                 .Select(c => new Consultum()
+                .Select(c => new Consultum()
                  {
                      DataConsulta = c.DataConsulta,
                      IdConsulta = c.IdConsulta,
@@ -137,7 +168,8 @@ namespace SP_Medical_Group_webApi.Repositories
                      }
                  })
                  .ToList();
-            
         }
     }
 }
+
+
