@@ -50,7 +50,7 @@ namespace SP_Medical_Group_webApi.Controllers
             return Ok(listaClinicas);
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("{IdClinica}")]
         public IActionResult BuscarPorId(int IdClinica)
         {
 
@@ -88,7 +88,7 @@ namespace SP_Medical_Group_webApi.Controllers
             }
         }
         //[Authorize(Roles = "1")]
-        [HttpDelete("{id}")]
+        [HttpDelete("{idClinica}")]
         public IActionResult Deletar(int idClinica)
         {
             try

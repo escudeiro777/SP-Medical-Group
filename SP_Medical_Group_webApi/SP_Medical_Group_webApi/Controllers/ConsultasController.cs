@@ -25,7 +25,7 @@ namespace SP_Medical_Group_webApi.Controllers
             _consultaRepository = new ConsultaRepository();
         }
 
-        [Authorize(Roles = "2")]
+        //[Authorize(Roles = "2")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum novaConsulta)
         {
@@ -45,7 +45,7 @@ namespace SP_Medical_Group_webApi.Controllers
             });
         }
 
-        [Authorize(Roles = "2")]
+        //[Authorize(Roles = "2")]
         [HttpPatch("Cancelar/{id}")]
         public IActionResult Cancelar(int id)
         {
@@ -65,7 +65,7 @@ namespace SP_Medical_Group_webApi.Controllers
             });
         }
 
-        [Authorize(Roles = "3")]
+        //[Authorize(Roles = "3")]
         [HttpPatch("Descricao/{id}")]
         public IActionResult AlterarDescricao(Consultum consultaAtualizada, int id)
         {
@@ -106,7 +106,7 @@ namespace SP_Medical_Group_webApi.Controllers
             });
         }
 
-        [Authorize(Roles = "1,3")]
+        //[Authorize(Roles = "1,3")]
         [HttpGet("minhas")]
         public IActionResult ListarMinhas()
         {
@@ -138,7 +138,7 @@ namespace SP_Medical_Group_webApi.Controllers
                     return Ok(new
                     {
                         Mensagem = $"Esse paciente tem {_consultaRepository.ListarMinhas(idConsulta, idTipo).Count} consultas",
-                        listaConsultas
+                         listaConsultas
                     });
                 }
 

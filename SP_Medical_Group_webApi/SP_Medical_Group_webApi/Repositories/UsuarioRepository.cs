@@ -1,4 +1,5 @@
-﻿using SP_Medical_Group_webApi.Contexts;
+﻿using Microsoft.AspNetCore.Http;
+using SP_Medical_Group_webApi.Contexts;
 using SP_Medical_Group_webApi.Domains;
 using SP_Medical_Group_webApi.Interfaces;
 using System;
@@ -39,6 +40,11 @@ namespace SP_Medical_Group_webApi.Repositories
 
         }
 
+        public string ConsultarPerfil(int IdUsuario)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Deletar(int idUsuario)
         {
             ctx.Usuarios.Remove(BuscarPorId(idUsuario));
@@ -62,6 +68,17 @@ namespace SP_Medical_Group_webApi.Repositories
                    }
                })
                .ToList();
+        }
+
+        public Usuario Login(string email, string senha)
+        {
+
+            return ctx.Usuarios.FirstOrDefault(e => e.Email == email && e.Senha == senha);
+        }
+
+        public void SalvarPerfil(IFormFile foto, int IdUsuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SP_Medical_Group_webApi.Domains;
+﻿using Microsoft.AspNetCore.Http;
+using SP_Medical_Group_webApi.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,9 @@ namespace SP_Medical_Group_webApi.Interfaces
         void AtualizarUrl(int idUsuario, Usuario usuarioAtualizado);
 
         void Deletar(int idUsuario);
+
+        Usuario Login(string email, string senha);
+        void SalvarPerfil(IFormFile foto, int IdUsuario);
+        string ConsultarPerfil(int IdUsuario);
     }
 }
