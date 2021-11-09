@@ -15,7 +15,6 @@ GO
 CREATE TABLE usuario(
  idUsuario INT PRIMARY KEY IDENTITY (1,1), 
  idTipoUsuario TINYINT FOREIGN KEY REFERENCES tipoUsuario(idTipoUsuario),
- nomeUsuario VARCHAR(150) NOT NULL,
  email VARCHAR(256) NOT NULL UNIQUE,
  senha VARCHAR(25) NOT NULL
 );
@@ -59,6 +58,7 @@ GO
 CREATE TABLE paciente(
  idPaciente INT PRIMARY KEY IDENTITY (1,1),
  idUsuario INT FOREIGN KEY REFERENCES usuario(idUsuario),
+ nomePaciente VARCHAR(150) NOT NULL,
  dataNasc DATE NOT NULL,
  telefone VARCHAR(20) UNIQUE,
  rg VARCHAR(15) NOT NULL UNIQUE,
@@ -66,12 +66,6 @@ CREATE TABLE paciente(
  endereco VARCHAR (256) NOT NULL
 );
 GO
-
-DROP TABLE paciente
-GO
-DROP TABLE consulta
-GO
-
 
 CREATE TABLE consulta(
 idConsulta INT PRIMARY KEY IDENTITY (1,1),
@@ -82,22 +76,50 @@ dataConsulta DATETIME NOT NULL,
 descricao VARCHAR (256)
 );
 GO
+
+CREATE TABLE imagemUsuario(     
+idImagem INT PRIMARY KEY IDENTITY(1,1),     
+idUsuario INT NOT NULL UNIQUE FOREIGN KEY REFERENCES usuario(idUsuario),
+binario VARBINARY(MAX) NOT NULL,    
+mimeType VARCHAR(30) NOT NULL,    
+nomeArquivo VARCHAR(250) NOT NULL,     
+data_inclusao DATETIME DEFAULT GETDATE() NULL 
+); 
+GO
+
+drop table consulta
+drop table paciente
+drop table medico
+drop table tipoUsuario
+drop table imagemUsuario
+drop table clinica
+drop table usuario
 --------------------------------------------------------------dml--------------------------------------------------------------------
 INSERT INTO tipoUsuario(nomeTipoUsuario)
 VALUES ('Administrador'), ('Médico'), ('Paciente')
 GO
 
-INSERT INTO usuario(idTipoUsuario,nomeUsuario,email,senha)
+INSERT INTO usuario(idTipoUsuario,email,senha)
 VALUES 
-(3,'Ligia','ligia@email.com','111'),(3,'Alexandre','alexandre@email.com','222'),
-(3,'Fernando','Fernando@email.com','333'),(3,'Henrique','henrique@email.com','444'),
-(3,'João','joao@email.com','555'),(3,'Bruno','bruno@email.com','666'),
-(3,'Mariana','mariana@email.com','777'),(2,'Ricardo Lemos','ricardo.lemos@spmedicalgroup.com.br','888'),(2,'Roberto Possarle','roberto.possarle@spmedicalgroup.com.br','999'),
-(2,'Helena Strada','helena.souza@spmedicalgroup.com.br','101010'),(1,'Lucas ADM','ADM@email.com.br','111111')
+(3,'ligia@email.com','111'),(3,'alexandre@email.com','222'),
+(3,'Fernando@email.com','333'),(3,'henrique@email.com','444'),
+(3,'joao@email.com','555'),(3,'bruno@email.com','666'),
+(3,'mariana@email.com','777'),(2,'ricardo.lemos@spmedicalgroup.com.br','888'),(2,'roberto.possarle@spmedicalgroup.com.br','999'),
+(2,'helena.souza@spmedicalgroup.com.br','101010'),(1,'ADM@email.com.br','111111')
 GO
+
 
 INSERT INTO situacaoConsulta(situacaoConsulta)
 VALUES ('AGENDADA'),('REALIZADA'),('CANCELADA')
+GO
+
+INSERT INTO consulta(idPaciente,idMedico,idSituacaoConsulta,dataConsulta,descricao)
+VALUES (7,4,1,'20/01/2020  15:00:00','Em observação'),
+       (2,3,2,'01/06/2020  10:00:00',NULL),(3,2,1,'07/02/2020  11:00:00','Em bom estado '),
+	   (2,3,1,'06/02/2018  10:00:00','Em recuperação'),
+	   (4,2,2,'07/02/2019  11:00:45',NULL),
+	   (7,4,3,'08/03/2020  15:00:00',NULL),
+	   (4,2,3,'09/03/2020  11:00:45',NULL);
 GO
 
 INSERT INTO especializacao (nomeEspecializacao)
@@ -116,15 +138,15 @@ INSERT INTO medico(idUsuario,idClinica,idEspecializacao,nomeMedico,crm)
 VALUES ('8','1','2','Ricardo Lemos', '45356-SP'),('9','1','17','Roberto Possarle', '54356-SP'),('10','1','16','Helena Strada', '65463-SP')
 GO
 
-INSERT INTO paciente (idUsuario,dataNasc,telefone,rg,cpf,endereco)
+INSERT INTO paciente (idUsuario,nomePaciente,dataNasc,telefone,rg,cpf,endereco)
 VALUES
-(1, '13/10/1983', '11 3456-7654', '43522543-5', '94839859000', 'Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'), 
-(6, '23/7/2001', '11 98765-6543', '32654345-7', '73556944057', 'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'), 
-(7, '10/10/1978', '11 97208-4453', '54636525-3', '16839338002', 'Av. Ibirapuera - Indianópolis, 2927,  São Paulo - SP, 04029-200'), 
-(8, '13/10/1985', '11 3456-6543', '54366362-5', '14332654765', 'R. Vitória, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'), 
-(9, '27/08/1975', '11 7656-6377', '53254444-1', '91305348010', 'R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirão Pires - SP, 09405-380'), 
-(10, '21/03/1972', '11 95436-8769', '54566266-7', '79799299004', 'Alameda dos Arapanés, 945 - Indianópolis, São Paulo - SP, 04524-001'), 
-(11, '03/05/2018', NULL, '54566266-8', '13771913039', 'R Sao Antonio, 232 - Vila Universal, Barueri - SP, 06407-140');
+(1,'Ligia', '13/10/1983', '11 3456-7654', '43522543-5', '94839859000', 'Rua Estado de Israel 240, São Paulo, Estado de São Paulo, 04022-000'), 
+(2,'Alexandre', '23/7/2001', '11 98765-6543', '32654345-7', '73556944057', 'Av. Paulista, 1578 - Bela Vista, São Paulo - SP, 01310-200'), 
+(3, 'Fernando', '10/10/1978', '11 97208-4453', '54636525-3', '16839338002', 'Av. Ibirapuera - Indianópolis, 2927,  São Paulo - SP, 04029-200'), 
+(4,'Henrique', '13/10/1985', '11 3456-6543', '54366362-5', '14332654765', 'R. Vitória, 120 - Vila Sao Jorge, Barueri - SP, 06402-030'), 
+(5,'João', '27/08/1975', '11 7656-6377', '53254444-1', '91305348010', 'R. Ver. Geraldo de Camargo, 66 - Santa Luzia, Ribeirão Pires - SP, 09405-380'), 
+(6,'Bruno', '21/03/1972', '11 95436-8769', '54566266-7', '79799299004', 'Alameda dos Arapanés, 945 - Indianópolis, São Paulo - SP, 04524-001'), 
+(7, 'Mariana','03/05/2018', NULL, '54566266-8', '13771913039', 'R Sao Antonio, 232 - Vila Universal, Barueri - SP, 06407-140');
 
 INSERT INTO consulta (idPaciente,idMedico,idSituacaoConsulta,dataConsulta,descricao)
 VALUES
