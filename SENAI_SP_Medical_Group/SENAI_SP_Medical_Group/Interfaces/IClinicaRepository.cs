@@ -20,15 +20,15 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// <summary>
         /// Atualiza uma clinica pela URL
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idClinica"></param>
         /// <param name="clinicaAtualizada"></param>
-        void AtualizarUrl(short id, Clinica clinicaAtualizada);
+        void AtualizarUrl(short idClinica, Clinica clinicaAtualizada);
 
         /// <summary>
         /// Deletar clínica
         /// </summary>
-        /// <param name="id">ID da clínica deletado</param>
-        void Deletar(short id);
+        /// <param name="idClinica">ID da clínica deletado</param>
+        void Deletar(short idClinica);
 
         /// <summary>
         /// Listar todas as clinicas cadastradas
@@ -39,8 +39,8 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// <summary>
         /// Busca uma clinica pelo ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="idClinica"></param>
         /// <returns>Clinica Buscada</returns>
-        Clinica BuscarPorId(short id);
+        Clinica BuscarPorId(short idClinica);
     }
 }

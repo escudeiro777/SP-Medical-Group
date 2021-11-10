@@ -28,7 +28,7 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// Deletar paciente
         /// </summary>
         /// <param name="idPaciente">ID do paciente deletado</param>
-        void Deletar(short idPaciente);
+        void Deletar(short id);
 
         /// <summary>
         /// Listar todos os pacientes cadastrados

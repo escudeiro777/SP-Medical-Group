@@ -19,14 +19,14 @@
             <summary>
             Atualiza uma clinica pela URL
             </summary>
-            <param name="id"></param>
+            <param name="idClinica"></param>
             <param name="clinicaAtualizada"></param>
         </member>
         <member name="M:SENAI_SP_Medical_Group.Interfaces.IClinicaRepository.Deletar(System.Int16)">
             <summary>
             Deletar clínica
             </summary>
-            <param name="id">ID da clínica deletado</param>
+            <param name="idClinica">ID da clínica deletado</param>
         </member>
         <member name="M:SENAI_SP_Medical_Group.Interfaces.IClinicaRepository.ListarTodos">
             <summary>
@@ -38,7 +38,7 @@
             <summary>
             Busca uma clinica pelo ID
             </summary>
-            <param name="id"></param>
+            <param name="idClinica"></param>
             <returns>Clinica Buscada</returns>
         </member>
         <member name="T:SENAI_SP_Medical_Group.Interfaces.IConsultaRepository">
@@ -64,12 +64,6 @@
             Deletar consulta
             </summary>
             <param name="id">ID da consulta deletada</param>
-        </member>
-        <member name="M:SENAI_SP_Medical_Group.Interfaces.IConsultaRepository.ListarTodos">
-            <summary>
-            Listar todas as consultas cadastradas
-            </summary>
-            <returns>Lista de consultas</returns>
         </member>
         <member name="M:SENAI_SP_Medical_Group.Interfaces.IConsultaRepository.ListarMinhas(System.Int16,System.Int16)">
             <summary>
@@ -225,6 +219,31 @@
             </summary>
             <param name="idUsuario">ID do usuario que será consultado</param>
             <returns>Perfil do usuario</returns>
+        </member>
+        <member name="T:SENAI_SP_Medical_Group.Repositories.ClinicaRepository">
+            <summary>
+            repositorio da clinica
+            </summary>
+        </member>
+        <member name="T:SENAI_SP_Medical_Group.Repositories.MedicoRepository">
+            <summary>
+            repositorio do medico
+            </summary>
+        </member>
+        <member name="T:SENAI_SP_Medical_Group.Repositories.PacienteRepository">
+            <summary>
+            repositorio do paciente
+            </summary>
+        </member>
+        <member name="T:SENAI_SP_Medical_Group.Repositories.UsuarioRepository">
+            <summary>
+            repositorio do usuario
+            </summary>
+        </member>
+        <member name="T:SENAI_SP_Medical_Group.ViewModels.LoginViewModel">
+            <summary>
+            classe responsável pelo login do usuario
+            </summary>
         </member>
     </members>
 </doc>

@@ -43,7 +43,7 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Usuario Buscado</returns>
-        Medico BuscarPorId(short id);
+        Usuario BuscarPorId(short id);
 
         /// <summary>
         /// Salvar imagem de perfil no banco

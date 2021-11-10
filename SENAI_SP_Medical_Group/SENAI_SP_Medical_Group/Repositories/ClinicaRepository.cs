@@ -16,12 +16,23 @@ namespace SENAI_SP_Medical_Group.Repositories
         SpMedicalGroupContext ctx = new();
         public void AtualizarUrl(short id, Clinica clinicaAtualizada)
         {
-            throw new NotImplementedException();
+            Clinica clinicaBuscada = ctx.Clinicas.Find(id);
+            if (clinicaBuscada != null)
+            {
+                clinicaBuscada.EndClinica = clinicaAtualizada.EndClinica;
+                clinicaBuscada.Cnpj = clinicaAtualizada.Cnpj;
+                clinicaBuscada.RazaoSocial = clinicaAtualizada.RazaoSocial;
+                clinicaBuscada.NomeFantasia = clinicaAtualizada.NomeFantasia;
+
+                ctx.Clinicas.Update(clinicaBuscada);
+
+                ctx.SaveChanges();
+            }
         }
 
-        public Clinica BuscarPorId(short id)
+        public Clinica BuscarPorId(short idClinica)
         {
-            throw new NotImplementedException();
+            return ctx.Clinicas.FirstOrDefault(u => u.IdClinica == idClinica);
         }
 
         public void Cadastrar(Clinica novaClinica)
@@ -30,18 +41,16 @@ namespace SENAI_SP_Medical_Group.Repositories
             ctx.SaveChanges();
         }
 
-        public void Deletar(short id)
+        public void Deletar(short idClinica)
         {
-            Clinica clinicaBuscada = ctx.Clinicas.FirstOrDefault(c => c.IdClinica == id);
 
-            ctx.Clinicas.Remove(clinicaBuscada);
-
+            ctx.Clinicas.Remove(BuscarPorId(idClinica));
             ctx.SaveChanges();
         }
 
         public List<Clinica> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Clinicas.ToList();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace SENAI_SP_Medical_Group.Domains
 
         public int IdPaciente { get; set; }
         public int? IdUsuario { get; set; }
+        public string NomePaciente { get; set; }
         public DateTime DataNasc { get; set; }
         public string Telefone { get; set; }
         public string Rg { get; set; }

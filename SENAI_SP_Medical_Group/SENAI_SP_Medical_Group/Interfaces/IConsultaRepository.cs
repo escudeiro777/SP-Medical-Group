@@ -31,12 +31,6 @@ namespace SENAI_SP_Medical_Group.Interfaces
         void Deletar(short id);
 
         /// <summary>
-        /// Listar todas as consultas cadastradas
-        /// </summary>
-        /// <returns>Lista de consultas</returns>
-        List<Consultum> ListarTodos();
-
-        /// <summary>
         /// Lista as consultas de um médico ou um paciente em especifico
         /// </summary>
         /// <param name="id">ID ou do médico ou do paciente</param>
