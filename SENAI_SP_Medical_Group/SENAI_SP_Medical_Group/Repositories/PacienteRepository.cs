@@ -15,7 +15,7 @@ namespace SENAI_SP_Medical_Group.Repositories
 
     {
         SpMedicalGroupContext ctx = new();
-        public void AtualizarUrl(short id, Paciente pacienteAtualizado)
+        public void AtualizarUrl(int id, Paciente pacienteAtualizado)
         {
             Paciente pacienteBuscado = ctx.Pacientes.Find(id);
             if (pacienteBuscado != null)

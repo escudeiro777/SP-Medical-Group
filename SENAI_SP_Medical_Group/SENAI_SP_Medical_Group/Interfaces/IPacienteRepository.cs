@@ -22,12 +22,12 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <param name="pacienteAtualizado"></param>
-        void AtualizarUrl(short id, Paciente pacienteAtualizado);
+        void AtualizarUrl(int id, Paciente pacienteAtualizado);
 
         /// <summary>
         /// Deletar paciente
         /// </summary>
-        /// <param name="idPaciente">ID do paciente deletado</param>
+        /// <param name="id">ID do paciente deletado</param>
         void Deletar(short id);
 
         /// <summary>

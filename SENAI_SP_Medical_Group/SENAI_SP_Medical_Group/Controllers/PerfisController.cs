@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SENAI_SP_Medical_Group.Interfaces;
+using SENAI_SP_Medical_Group.Repositories;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,7 +18,7 @@ namespace SENAI_SP_Medical_Group.Controllers
     {
         private IUsuarioRepository _usuarioRepository { get; set; }
 
-        public PerfilsController()
+        public PerfisController()
         {
             _usuarioRepository = new UsuarioRepository();
         }

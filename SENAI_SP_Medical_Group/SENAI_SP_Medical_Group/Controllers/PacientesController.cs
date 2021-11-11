@@ -47,7 +47,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             }
         }
         [HttpPut("{id}")]
-        public IActionResult AtualizarUrl(short id, Paciente pacienteAtualizado)
+        public IActionResult AtualizarUrl(int id, Paciente pacienteAtualizado)
         {
             try
             {

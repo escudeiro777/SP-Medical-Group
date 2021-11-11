@@ -43,7 +43,6 @@ namespace SENAI_SP_Medical_Group.Repositories
 
         public void Deletar(short idClinica)
         {
-
             ctx.Clinicas.Remove(BuscarPorId(idClinica));
             ctx.SaveChanges();
         }

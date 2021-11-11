@@ -142,7 +142,7 @@
             </summary>
             <param name="novoPaciente"> novo paciente cadastrado</param>
         </member>
-        <member name="M:SENAI_SP_Medical_Group.Interfaces.IPacienteRepository.AtualizarUrl(System.Int16,SENAI_SP_Medical_Group.Domains.Paciente)">
+        <member name="M:SENAI_SP_Medical_Group.Interfaces.IPacienteRepository.AtualizarUrl(System.Int32,SENAI_SP_Medical_Group.Domains.Paciente)">
             <summary>
             Atualiza um paciente pela URL
             </summary>
@@ -153,7 +153,7 @@
             <summary>
             Deletar paciente
             </summary>
-            <param name="idPaciente">ID do paciente deletado</param>
+            <param name="id">ID do paciente deletado</param>
         </member>
         <member name="M:SENAI_SP_Medical_Group.Interfaces.IPacienteRepository.ListarTodos">
             <summary>

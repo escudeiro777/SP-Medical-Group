@@ -24,6 +24,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
+        [HttpPost]
         public IActionResult Login(Usuario login)
         {
             Usuario usuarioBuscado = _usuarioRepository.Login(login.Email, login.Senha);
