@@ -5703,19 +5703,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\55119\\.nuget\\packages\\": {}
+    "C:\\Users\\47314899894\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
+      "projectUniqueName": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
       "projectName": "SENAI_SP_Medical_Group",
-      "projectPath": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
-      "packagesPath": "C:\\Users\\55119\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\obj\\",
+      "projectPath": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
+      "packagesPath": "C:\\Users\\47314899894\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\55119\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\47314899894\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

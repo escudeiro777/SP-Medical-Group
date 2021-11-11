@@ -150,37 +150,30 @@ VALUES
 
 INSERT INTO consulta (idPaciente,idMedico,idSituacaoConsulta,dataConsulta,descricao)
 VALUES
-(7, 7, 2, '01/02/2020 15:00', 'paciente ok'),
-(2, 6, 2, '19/06/2021  10:00', NULL), 
-(3, 7, 2, '07/02/2021 11:00', 'paciente ok'), 
-(2, 6, 2, '24/08/2021 11:00', 'paciente ok'), 
-(4, 5, 3, '02/07/2019 11:00', NULL), 
-(7, 7, 1, '03/10/2020 21:00', NULL), 
-(4, 5, 1, '03/09/2020 11:00', NULL);
+(7, 1, 2, '01/02/2020 15:00', 'paciente ok'),
+(2, 2, 2, '19/06/2021  10:00', NULL), 
+(3, 3, 2, '07/02/2021 11:00', 'paciente ok'), 
+(2, 3, 2, '24/08/2021 11:00', 'paciente ok'), 
+(4, 1, 3, '02/07/2019 11:00', NULL), 
+(7, 2, 1, '03/10/2020 21:00', NULL), 
+(4, 3, 1, '03/09/2020 11:00', NULL);
 
 ----------------------------------------------------------dql-----------------------------------------------------------
 
 SELECT * FROM tipoUsuario;
 GO
-
 SELECT * FROM usuario;
 GO
-
 SELECT * FROM especializacao;
 GO
-
 SELECT * FROM clinica;
 GO
-
 SELECT * FROM paciente;
 GO
-
 SELECT * FROM medico;
 GO
-
 SELECT * FROM situacaoConsulta;
 GO
-
 SELECT * FROM consulta;
 GO
 
