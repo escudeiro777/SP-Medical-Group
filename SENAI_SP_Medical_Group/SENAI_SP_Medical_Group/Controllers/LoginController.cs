@@ -41,11 +41,11 @@ namespace SENAI_SP_Medical_Group.Controllers
                 new Claim(ClaimTypes.Role,usuarioBuscado.IdTipoUsuario.ToString())
             };
 
-            var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("Sp_medical_Group-chave-autenticacao"));
+            var Key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("SENAI_SP_Medical_Group-chave-autenticacao"));
 
             var Creds = new SigningCredentials(Key, SecurityAlgorithms.HmacSha256);
 
-            var Token = new JwtSecurityToken(issuer: "Sp_medical.webAPI", audience: "Sp_medical.webAPI", claims: minhasClaims, expires: DateTime.Now.AddMinutes(30), signingCredentials: Creds);
+            var Token = new JwtSecurityToken(issuer: "SENAI_SP_Medical_Group.webAPI", audience: "SENAI_SP_Medical_Group.webAPI", claims: minhasClaims, expires: DateTime.Now.AddMinutes(30), signingCredentials: Creds);
 
             return Ok(new
             {

@@ -25,7 +25,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             _consultaRepository = new ConsultaRepository();
         }
 
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Consultum novaConsulta)
         {
@@ -51,8 +51,8 @@ namespace SENAI_SP_Medical_Group.Controllers
 
         }
 
-        [Authorize(Roles = "3,2")]
-        [HttpGet("consulta")]
+       // [Authorize(Roles = "2,3")]
+        [HttpGet("minhas")]
         public IActionResult ListarMinhas()
         {
             try
@@ -64,7 +64,7 @@ namespace SENAI_SP_Medical_Group.Controllers
                 {
                     return BadRequest(new
                     {
-                        Mensagem = "O médico não possui consultas"
+                        Mensagem = "Vcoê não possui consultas"
                     });
                 }
                 return Ok(listaConsulta);
@@ -80,8 +80,8 @@ namespace SENAI_SP_Medical_Group.Controllers
             }
         }
 
-        [Authorize(Roles = "3")]
-        [HttpPatch("Descricao/{id}")]
+        [Authorize(Roles = "2")]
+        [HttpPatch("descricao/{id}")]
         public IActionResult MudarDescricao(short id, Consultum novaDescricao)
         {
             try
@@ -121,9 +121,9 @@ namespace SENAI_SP_Medical_Group.Controllers
                 return BadRequest(erro);
             }
         }
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
-        public IActionResult Buscar(short id)
+        public IActionResult BuscarPorId(short id)
         {
 
             if (_consultaRepository.BuscarPorId(id) == null)
@@ -136,7 +136,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             return Ok(_consultaRepository.BuscarPorId(id));
         }
 
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult AtualizarUrl(short id, Consultum consultaAtualizada)
         {
@@ -144,7 +144,8 @@ namespace SENAI_SP_Medical_Group.Controllers
 
             return StatusCode(204);
         }
-        [Authorize(Roles = "1")]
+
+        //[Authorize(Roles = "1")]
         [HttpDelete("deletar/{id}")]
         public IActionResult Deletar(short id)
         {
@@ -161,7 +162,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             return StatusCode(204);
         }
 
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpPatch("Situacao/{id}")]
         public IActionResult MudarSituacao(short id, Consultum novaSituacao)
         {

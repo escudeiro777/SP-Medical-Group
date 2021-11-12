@@ -74,10 +74,11 @@ namespace SENAI_SP_Medical_Group.Repositories
                         .Where(c => c.IdMedico == idMedico).ToList();
                 case 3:
                     Paciente paciente = ctx.Pacientes.FirstOrDefault(p => p.IdPaciente == id);
-                    short idPaciente = (short)paciente.IdPaciente;
+                    int idPaciente =paciente.IdPaciente;
                     return ctx.Consulta
                         .Select(c => new Consultum()
                         {
+                            IdPaciente = c.IdPaciente,
                             IdConsulta = c.IdConsulta,
                             DataConsulta = c.DataConsulta,
                             IdSituacaoConsulta = c.IdSituacaoConsulta,

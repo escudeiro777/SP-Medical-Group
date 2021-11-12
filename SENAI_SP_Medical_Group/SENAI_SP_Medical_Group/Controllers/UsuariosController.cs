@@ -22,7 +22,15 @@ namespace SENAI_SP_Medical_Group.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
-        [Authorize(Roles = "1")]
+        [HttpGet]
+        public IActionResult ListarTodos() {
+
+            List<Usuario> listaUsuario = _usuarioRepository.ListarTodos();
+
+            return Ok(listaUsuario);
+        }
+
+        // [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Cadastrar(Usuario novoUsuario)
         {
@@ -31,7 +39,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             return StatusCode(201);
         }
 
-        [Authorize(Roles = "1")]
+       // [Authorize(Roles = "1")]
         [HttpDelete("deletar/{idUsuario}")]
         public IActionResult Deletar(short idUsuario)
         {
