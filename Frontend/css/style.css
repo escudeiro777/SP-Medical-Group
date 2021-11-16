@@ -66,9 +66,8 @@ h1{
     width: 350px;
     height: 360px;
     border-radius: 10px;
-
-    
 }
+
 form{
     display: flex;
     flex-direction: column;
@@ -86,8 +85,29 @@ input{
 
 }
 
+.esqueceu_senha{
+    font-family: 'Overpass', sans-serif;
+}
+
 .btn{
 
     width: 290px;
     height: 60px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 20px;
+    border:none;
+}
+
+.btn:hover{
+    background-color:lightgray;
+    transition: 0.5;
+}
+
+.grupo_texto{
+    font-family: 'Overpass', sans-serif;
+}
+
+.link_cadastro{
+    font-family: 'Overpass', sans-serif;
+    color:blueviolet;
 }
