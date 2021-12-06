@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  ImageBackground,
-  TextInput,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    ImageBackground,
+    TextInput,
 } from 'react-native';
 
 
@@ -16,12 +16,12 @@ import api from './services/api'
 import { useNavigation } from '@react-navigation/core';
 
 
-export default function Login(){
+export default function Login() {
 
-    const [email, setEmail] = useState('saulo@gmail.com')
-    const [senha, setSenha] = useState('saulo123')
+    const [email, setEmail] = useState('ligia@email.com')
+    const [senha, setSenha] = useState('111')
     const navigation = new useNavigation();
-       
+
 
     realizarLogin = async () => {
         try {
@@ -29,76 +29,76 @@ export default function Login(){
                 email: email,
                 senha: senha
             })
-    
-            const token = resposta.data.token;
-    
-            await AsyncStorage.setItem('userToken', token);
-    
+
+
+
             if (resposta.status == 200) {
-                navigation.navigate('Main')
+                const token = resposta.data.token;
+                await AsyncStorage.setItem('userToken', token);
+                console.warn("adadsssssssssssss")
+                // navigation.navigate('Consultas')
+               this.props.navigation.navigate('Consultas')
             }
-            
+
         } catch (error) {
-            console.warn('erro')
+            console.warn(error)
         }
+      //  console.warn(token)
     }
 
 
-return(
-    <ImageBackground
-      source={require('../../assets/images/fundoLogin.png')}
-      style={StyleSheet.absoluteFillObject}
-    >
+    return (
+        <ImageBackground
+            source={require('../../assets/images/fundoLogin.png')}
+            style={StyleSheet.absoluteFillObject}
+        >
 
-        <View style={styles.loginContainer}>
-            <View style={styles.loginWrapper}>
+            <View style={styles.loginContainer}>
+                <View style={styles.loginWrapper}>
 
-                <Image 
-                source={require('../../assets/images/logoMedicalGroup.png')}
-                style={styles.imgLogin}
-                />
+                    <Image
+                        source={require('../../assets/images/logoLogin.png')}
+                        style={styles.logoLogin}
+                    />
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            placeholder="email"
+                            keyboardType="email-address"
+                            onChangeText={(campo) => setEmail(campo)}
+                            value={email}
+                            placeholderTextColor='rgba(9, 9, 9, 0.5)'
+                            style={styles.inputLogin}
+                        >
+                        </TextInput>
 
-                 <Text>SP MEDICAL GROUP</Text>
+                        <TextInput
+                            placeholder="password"
+                            keyboardType="default"
+                            onChangeText={(campo) => setSenha(campo)}
+                            value={senha}
+                            placeholderTextColor='rgba(9, 9, 9, 0.5)'
+                            style={styles.inputLogin}
+                            secureTextEntry={true}>
+                        </TextInput>
 
-                <View style={styles.inputContainer}>
-                    <TextInput
-                    placeholder="email"
-                    keyboardType="email-address"
-                    onChangeText={(campo) => setEmail(campo)}
-                    value={email}
-                    placeholderTextColor='rgba(9, 9, 9, 0.5)'
-                    style={styles.inputLogin}
-                    >
-                    </TextInput>
-
-                    <TextInput
-                    placeholder="password"
-                    keyboardType="default"
-                    onChangeText={(campo) => setSenha(campo)}
-                    value={senha}
-                    placeholderTextColor='rgba(9, 9, 9, 0.5)'
-                    style={styles.inputLogin}
-                    secureTextEntry={true}>
-                    </TextInput>
-                    
-                    <TouchableOpacity
-                    style={styles.btnLogin}
-                    onPress={realizarLogin}
-                    >
-                        <Text style={styles.btnLoginText}>
-                            Login
-                        </Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.btnLogin}
+                            onPress={realizarLogin}
+                        >
+                            <Text style={styles.btnLoginText}>
+                                Login
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
-        </View>
 
 
-    </ImageBackground>
-)
+        </ImageBackground>
+    )
 }
 const styles = StyleSheet.create({
-    loginContainer : {
+    loginContainer: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'center'
     },
@@ -111,9 +111,9 @@ const styles = StyleSheet.create({
         marginBottom: 80
     },
 
-    imgLogin: {
-        height: 256,
-        width: 218,
+    logoLogin: {
+        height: 170,
+        width: 100
     },
 
     inputContainer: {
@@ -133,16 +133,14 @@ const styles = StyleSheet.create({
         width: 229,
         height: 42,
 
-        backgroundColor: '#B7905F',
+        backgroundColor: '#A796E3',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-
         marginTop: 10
     },
 
     btnLoginText: {
-        color: '#fff',
-        textTransform: 'uppercase'
+        color: '#fff'
     }
 })
