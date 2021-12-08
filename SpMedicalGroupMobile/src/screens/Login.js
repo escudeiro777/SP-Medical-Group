@@ -18,8 +18,8 @@ import { useNavigation } from '@react-navigation/core';
 
 export default function Login() {
 
-    const [email, setEmail] = useState('ligia@email.com')
-    const [senha, setSenha] = useState('111')
+    const [email, setEmail] = useState('mariana@email.com')
+    const [senha, setSenha] = useState('777')
     const navigation = new useNavigation();
 
 
@@ -35,15 +35,14 @@ export default function Login() {
             if (resposta.status == 200) {
                 const token = resposta.data.token;
                 await AsyncStorage.setItem('userToken', token);
-                console.warn("adadsssssssssssss")
+                // console.warn(token)
                 // navigation.navigate('Consultas')
-               this.props.navigation.navigate('Consultas')
+               navigation.navigate('Consultas')
             }
 
         } catch (error) {
             console.warn(error)
         }
-      //  console.warn(token)
     }
 
 

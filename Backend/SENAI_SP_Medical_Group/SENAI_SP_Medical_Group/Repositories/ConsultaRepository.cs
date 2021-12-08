@@ -69,6 +69,12 @@ namespace SENAI_SP_Medical_Group.Repositories
                                 DataNasc = c.IdPacienteNavigation.DataNasc,
                                 Rg = c.IdPacienteNavigation.Rg,
                                 Cpf = c.IdPacienteNavigation.Cpf
+                            },
+                            IdMedicoNavigation = new Medico()
+                            {
+                                NomeMedico = c.IdMedicoNavigation.NomeMedico,
+                                Crm = c.IdMedicoNavigation.Crm,
+                                IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
                             }
                         })
                         .Where(c => c.IdMedico == idMedico).ToList();
@@ -89,6 +95,16 @@ namespace SENAI_SP_Medical_Group.Repositories
                                 NomeMedico = c.IdMedicoNavigation.NomeMedico,
                                 Crm = c.IdMedicoNavigation.Crm,
                                 IdEspecializacao = c.IdMedicoNavigation.IdEspecializacao
+                            },
+                            IdPacienteNavigation = new Paciente()
+                            {
+
+                                NomePaciente = c.IdPacienteNavigation.NomePaciente,
+                                Telefone = c.IdPacienteNavigation.Telefone,
+                                Endereco = c.IdPacienteNavigation.Endereco,
+                                DataNasc = c.IdPacienteNavigation.DataNasc,
+                                Rg = c.IdPacienteNavigation.Rg,
+                                Cpf = c.IdPacienteNavigation.Cpf
                             }
                         })
                         .Where(c => c.IdPaciente == idPaciente).ToList();
