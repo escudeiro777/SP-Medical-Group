@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.fundo_consulta {
+    background-image: url(../assets/fundo_telas_listagem.png);
+    height: 100vh;
+}
+
+.div_tabela {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    font-family: 'Overpass', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    width: 100vw;
+    color: #64D19B;
+}
+
+.alinhar_consulta {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 12%;
+}
+
+.container_tabela {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 75%;
+    margin-top: 60px;
+}
+
+.tabela {
+    border-spacing: 0;
+    text-align: center;
+    overflow: auto;
+    height: 20px;
+    justify-content: space-between;
+    width: 1000px;
+    margin-top: 150px;
+    margin-left: 300px;
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+.tabela th {
+    color: white;
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.5em;
+    border-bottom: 2px solid white;
+}
+
+.tabela td {
+    color: white;
+    font-family: 'Overpass', sans-serif;
+    font-size: 1em;
+    border-bottom: 2px solid white;
+}

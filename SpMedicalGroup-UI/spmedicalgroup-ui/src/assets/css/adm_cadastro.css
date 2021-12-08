@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Overpass', sans-serif;
+    text-align: center;
+}
+
+.logo {
+    width: 489.77px;
+    height: 239.75px;
+}
+
+.background {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/cadastro_recortado.png);
+    display: flex;
+}
+
+.container_form {
+    margin-top: 200px;
+    margin-left: 475px;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 245px;
+    height: 200px;
+}
+
+.linha_form {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(var(--d87, 255, 255, 255), 1);
+    padding: 1.3rem 0;
+    border: 1px solid #F1F1F1;
+    width: 350px;
+    height: 360px;
+    border-radius: 10px;
+}
+
+input {
+    display: flex;
+    width: 290px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 2px solid grey;
+}
+
+.btn {
+    width: 290px;
+    height: 60px;
+    font-family: 'Overpass', sans-serif;
+    font-size: 20px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: lightgray;
+    transition: 0.5;
+}
+
+.fundo_consulta {
+    background-image: url(../assets/fundo_telas_listagem.png);
+    height: 100vh;
+}
+
+.div_tabela {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    font-family: 'Overpass', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    width: 100vw;
+    color: #64D19B;
+}
+
+.alinhar_consulta {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 12%;
+}
+
+.container_tabela {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 75%;
+    margin-top: 60px;
+}
+
+.tabela {
+    border-spacing: 0;
+    text-align: center;
+    overflow: auto;
+    height: 20px;
+    justify-content: space-between;
+    width: 1000px;
+    margin-top: 150px;
+    margin-left: 300px;
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+.tabela th {
+    color: white;
+    font-family: 'Overpass', sans-serif;
+    font-size: 1.5em;
+    border-bottom: 2px solid white;
+}
+
+.tabela td {
+    color: white;
+    font-family: 'Overpass', sans-serif;
+    font-size: 1em;
+    border-bottom: 2px solid white;
+}
