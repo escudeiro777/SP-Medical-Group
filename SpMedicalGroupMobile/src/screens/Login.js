@@ -35,20 +35,17 @@ export default function Login() {
             if (resposta.status == 200) {
                 const token = resposta.data.token;
                 await AsyncStorage.setItem('userToken', token);
-                // console.warn(token)
-                // navigation.navigate('Consultas')
                navigation.navigate('Consultas')
             }
 
         } catch (error) {
-            console.warn(error)
         }
     }
 
 
     return (
         <ImageBackground
-            source={require('../../assets/images/fundoLogin.png')}
+            source={require('../../assets/images/backLogin.png')}
             style={StyleSheet.absoluteFillObject}
         >
 
@@ -56,7 +53,7 @@ export default function Login() {
                 <View style={styles.loginWrapper}>
 
                     <Image
-                        source={require('../../assets/images/logoLogin.png')}
+                        source={require('../../assets/images/logo.png')}
                         style={styles.logoLogin}
                     />
                     <View style={styles.inputContainer}>
@@ -107,17 +104,20 @@ const styles = StyleSheet.create({
         height: 450,
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: 80
+        marginTop:30
+
     },
 
-    logoLogin: {
-        height: 170,
-        width: 100
+    logo: {
+
+        height: 80,
+        width: 80,
     },
 
     inputContainer: {
         height: 160,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom:40
     },
 
     inputLogin: {
@@ -131,8 +131,7 @@ const styles = StyleSheet.create({
     btnLogin: {
         width: 229,
         height: 42,
-
-        backgroundColor: '#A796E3',
+        backgroundColor: '#64d19b',
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',

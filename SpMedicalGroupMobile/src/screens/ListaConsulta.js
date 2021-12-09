@@ -1,16 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-
-  ImageBackground,
-} from 'react-native';
-
+import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import api from '../screens/services/api'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FlatList } from 'react-native-gesture-handler';
-
 export default class ListaConsulta extends Component {
   constructor(props) {
     super(props)
@@ -21,7 +12,7 @@ export default class ListaConsulta extends Component {
 
 
   buscarConsultas = async () => {
-    
+
     const token = await AsyncStorage.getItem('userToken');
 
     console.warn('buscar consultas')
@@ -43,15 +34,28 @@ export default class ListaConsulta extends Component {
     this.buscarConsultas();
   };
 
+  logout = async () => {
+    await AsyncStorage.removeItem('userToken');
+    this.props.navigation.navigate('Login');
+  }
+
   render() {
     return (
       <ImageBackground
         source={require('../../assets/images/fundoLista.png')}
-        style={StyleSheet.absoluteFillObject}>
-        
-        
-        <View style={styles.container}>
-          <Text style={styles.nomePagina}> Suas consultas</Text>
+        style={StyleSheet.absoluteFillObject}
+      >
+
+        <View style={styles.wrapper}>
+          <Text style={styles.nomePage}>Suas consultas</Text>
+
+          <TouchableOpacity onPress={this.logout} >
+            <Image source={require('../../assets/images/iconSair.png')}
+              style={styles.logout}
+            ></Image>
+          </TouchableOpacity>
+
+
           <View style={styles.containerFlatlist}>
             <FlatList
               contentContainerStyle={styles.mainBodyContent}
@@ -65,71 +69,52 @@ export default class ListaConsulta extends Component {
     )
   }
   renderItem = ({ item }) => (
+    <View style={styles.teste}>
+      <View style={styles.card}>
+        <View style={styles.tituloCardWrapper}>
+          <Text style={styles.tituloCard}>{item.idConsulta}</Text>
+        </View>
+        <View style={styles.container_dados}>
+          <Text style={styles.flatInfo}>{"Paciente: " + (item.idPacienteNavigation.nomePaciente)}</Text>
+          <Text style={styles.flatInfo}>{"Médico: " + (item.idMedicoNavigation.nomeMedico)}</Text>
+          <Text style={styles.flatInfo}>{"Descrição: " + (item.descricao)}</Text>
+          <Text style={styles.flatInfo}>{"Data : " + Intl.DateTimeFormat("pt-BR", {
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: false
+          }).format(new Date(item.dataConsulta))}</Text>
 
-    <View style={styles.card}>
-      <View style={styles.flatItems}>
-        <Text style={styles.flatInfo}>{"Paciente: "+(item.idPacienteNavigation.nomePaciente)}</Text>
-        <Text style={styles.flatInfo}>{"Médico: "+(item.idMedicoNavigation.nomeMedico)}</Text>
-        <Text style={styles.flatInfo}>{"Descrição: "+(item.descricao)}</Text>
-        <Text style={styles.flatInfo}>{"Data: "+Intl.DateTimeFormat("pt-BR", {
-          year: 'numeric',
-          month: 'numeric',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: false
-        }).format(new Date(item.dataConsulta))})</Text>
+        </View>
       </View>
     </View>
+
   )
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center', 
-},
-nomePagina:{
-  fontSize: 48,
-  textAlign: 'center',
-  marginTop:20,
-  fontFamily: 'Open Sans',
-  fontWeight:'800',
-  color:"#fff"
-},
+  wrapper: {
+    alignItems: 'center'
+  },
 
-mainBodyContent:{
-  width: '100%',
-},
+  logout: {
+    width: 31,
+    height: 31,
+    padding: 5,
+    paddingLeft: 8,
+    marginLeft: 8,
+    top: 7,
+  },
 
-containerFlatList: {
-  flex: 1, 
-  alignItems: 'center',
-  justifyContent: 'center',
-},
-
-
-card:{
-backgroundColor: '#fff',
-alignItems: 'center',
-width: '100%',
-marginTop:20,
-marginBottom: 30,
-borderRadius:10
-},
-
-flatItem: {
-  borderBottomWidth: 1,
-  borderBottomColor: '#000',
-  marginTop: 40,
-  
-},
-
-flatInfo: {
-  fontSize: 14,
-  color: '#000',
-  lineHeight: 24,
-  fontFamily: 'TitilliumWeb-Regular',
-}
+  containerFlatlist: {
+    containerFlatList: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 20
+    },
+  },
 
 })
