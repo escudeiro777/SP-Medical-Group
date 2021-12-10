@@ -15,10 +15,6 @@ export default class ListaConsulta extends Component {
 
     const token = await AsyncStorage.getItem('userToken');
 
-    console.warn('buscar consultas')
-
-    console.warn(token)
-
     const resposta = await api.get('/consultas/minhas', {
       headers: {
         Authorization: 'Bearer ' + token
@@ -52,7 +48,8 @@ export default class ListaConsulta extends Component {
           <TouchableOpacity onPress={this.logout} >
             <Image source={require('../../assets/images/iconSair.png')}
               style={styles.logout}
-            ></Image>
+            >
+            </Image>
           </TouchableOpacity>
 
 
@@ -72,21 +69,23 @@ export default class ListaConsulta extends Component {
     <View style={styles.teste}>
       <View style={styles.card}>
         <View style={styles.tituloCardWrapper}>
-          <Text style={styles.tituloCard}>{item.idConsulta}</Text>
+          <Text style={styles.tituloCard}>Consulta: {item.idConsulta}</Text>
         </View>
-        <View style={styles.container_dados}>
-          <Text style={styles.flatInfo}>{"Paciente: " + (item.idPacienteNavigation.nomePaciente)}</Text>
-          <Text style={styles.flatInfo}>{"Médico: " + (item.idMedicoNavigation.nomeMedico)}</Text>
-          <Text style={styles.flatInfo}>{"Descrição: " + (item.descricao)}</Text>
-          <Text style={styles.flatInfo}>{"Data : " + Intl.DateTimeFormat("pt-BR", {
-            year: 'numeric',
-            month: 'numeric',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: false
-          }).format(new Date(item.dataConsulta))}</Text>
+        <View style={styles.textoWrapper}>
+          <View style={styles.container_dados}>
+            <Text style={styles.flatInfo}>{"Paciente: " + (item.idPacienteNavigation.nomePaciente)}</Text>
+            <Text style={styles.flatInfo}>{"Médico: " + (item.idMedicoNavigation.nomeMedico)}</Text>
+            <Text style={styles.flatInfo}>{"Descrição: " + (item.descricao)}</Text>
+            <Text style={styles.flatInfo}>{"Data : " + Intl.DateTimeFormat("pt-BR", {
+              year: 'numeric',
+              month: 'numeric',
+              day: 'numeric',
+              hour: 'numeric',
+              minute: 'numeric',
+              hour12: false
+            }).format(new Date(item.dataConsulta))}</Text>
 
+          </View>
         </View>
       </View>
     </View>
@@ -100,12 +99,16 @@ const styles = StyleSheet.create({
   },
 
   logout: {
-    width: 31,
-    height: 31,
     padding: 5,
     paddingLeft: 8,
-    marginLeft: 8,
-    top: 7,
+    marginLeft: 8
+  },
+
+  nomePage: {
+    fontSize: 35,
+    color: "#fff",
+    marginTop: "10%",
+    fontWeight: "bold"
   },
 
   containerFlatlist: {
@@ -116,5 +119,34 @@ const styles = StyleSheet.create({
       marginTop: 20
     },
   },
+  tituloCardWrapper:
+  {
+    backgroundColor: '#6A49E3',
+    height: 50,
+    width: 315,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 30,
+    
+  },
 
+  tituloCard: {
+    color: "#000",
+    fontSize: 20,
+    
+  },
+
+  flatInfo: {
+    color: "#000",
+    marginTop:5,
+    marginBottom:5,
+    marginLeft:10
+  },
+
+
+  container_dados:{
+    backgroundColor:"#fff",
+    borderBottomStartRadius:10,
+    borderBottomRightRadius:10
+  }
 })
