@@ -22,12 +22,12 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": "true",
-      "applicationUrl": "http://192.168.4.37:5000"
+      "applicationUrl": "http://192.168.7.71:5000"
     },
     "WSL": {
       "commandName": "WSL2",
       "launchBrowser": true,
-      "launchUrl": "http://192.168.4.37:5000",
+      "launchUrl": "http://192.168.7.71:5000",
       "environmentVariables": {
         "ASPNETCORE_URLS": "http://192.168.4.37:5000",
         "ASPNETCORE_ENVIRONMENT": "Development"
