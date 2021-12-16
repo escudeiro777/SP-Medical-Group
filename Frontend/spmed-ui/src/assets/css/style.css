@@ -11,7 +11,7 @@
 main{
     width: 100vw;
     height: 100vh;
-   background-image:url(../images/background_login.png);
+   background-image:url(../images//background_login.png);
    background-size: cover;
 }
 
@@ -42,8 +42,7 @@ main{
   
 }
 
-.txt_login{
-    margin-bottom: 15px;
+.txt_login{margin-top: 10%;
     font-family: 'Overpass', sans-serif;
     font-size: 30px;
     color:blueviolet;
@@ -96,6 +95,7 @@ input{
     font-family: 'Overpass', sans-serif;
     font-size: 20px;
     border:none;
+    margin-left: 3%;
 }
 
 .btn:hover{
@@ -110,4 +110,11 @@ input{
 .link_cadastro{
     font-family: 'Overpass', sans-serif;
     color:blueviolet;
+}
+
+.erroMensagem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2%;
 }

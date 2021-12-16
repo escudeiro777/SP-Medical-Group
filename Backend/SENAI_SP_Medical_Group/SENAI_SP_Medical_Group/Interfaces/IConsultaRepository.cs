@@ -58,5 +58,7 @@ namespace SENAI_SP_Medical_Group.Interfaces
         /// <param name="id"></param>
         /// <returns>Consulta Buscada</returns>
         Consultum BuscarPorId(short id);
+
+        List<Consultum> ListarTodas();
     }
 }

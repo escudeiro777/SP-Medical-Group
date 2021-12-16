@@ -115,6 +115,34 @@ namespace SENAI_SP_Medical_Group.Repositories
             }
         }
 
+        public List<Consultum> ListarTodas()
+        {
+            return ctx.Consulta
+         .Select(p => new Consultum()
+         {
+             DataConsulta = p.DataConsulta,
+             IdConsulta = p.IdConsulta,
+             Descricao = p.Descricao,
+             IdMedicoNavigation = new Medico()
+             {
+                 NomeMedico = p.IdMedicoNavigation.NomeMedico,
+                 Crm = p.IdMedicoNavigation.Crm,
+                 IdEspecializacao = p.IdMedicoNavigation.IdEspecializacao
+             },
+             IdPacienteNavigation = new Paciente()
+             {
+
+                 NomePaciente = p.IdPacienteNavigation.NomePaciente,
+                 Telefone = p.IdPacienteNavigation.Telefone,
+                 Endereco = p.IdPacienteNavigation.Endereco,
+                 DataNasc = p.IdPacienteNavigation.DataNasc,
+                 Rg = p.IdPacienteNavigation.Rg,
+                 Cpf = p.IdPacienteNavigation.Cpf
+             }
+         })
+             .ToList();
+        }
+
         public void mudarDescricao(short id, string descricao)
         {
             Consultum consultaBuscada = ctx.Consulta.FirstOrDefault(c => c.IdConsulta == id);
