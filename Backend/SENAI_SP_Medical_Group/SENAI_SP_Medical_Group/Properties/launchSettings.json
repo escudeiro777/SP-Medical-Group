@@ -29,7 +29,7 @@
       "launchBrowser": true,
       "launchUrl": "http://192.168.7.71:5000",
       "environmentVariables": {
-        "ASPNETCORE_URLS": "http://192.168.4.37:5000",
+        "ASPNETCORE_URLS": "http://192.168.7.71:5000",
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "distributionName": ""

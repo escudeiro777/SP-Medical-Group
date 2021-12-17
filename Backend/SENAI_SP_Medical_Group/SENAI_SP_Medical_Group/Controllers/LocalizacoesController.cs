@@ -36,6 +36,7 @@ namespace SENAI_SP_Medical_Group.Controllers
             }
         }
 
+
         [HttpPost]
         public IActionResult Post(Localizacao novaLocalizacao)
         {
