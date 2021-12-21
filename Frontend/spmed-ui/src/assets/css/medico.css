@@ -16,7 +16,7 @@
     }
     
     .background {
-        background-image: url(../assets/cadastro_recortado.png);
+        background-image: url(../images/cadastro_recortado.png);
         display: flex;
     }
     
@@ -71,7 +71,7 @@
     }
     
     .fundo_consulta {
-        background-image: url(../assets/fundo_telas_listagem.png);
+        background-image: url(../images/fundo_telas_listagem.png);
         height: 100vh;
     }
     

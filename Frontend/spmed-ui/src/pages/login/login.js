@@ -15,6 +15,7 @@ export default class Login extends Component {
     };
   }
   login = (evento) => {
+    // console.log('teste')
     evento.preventDefault();
     this.setState({ erroMensagem: "", isLoading: true })
     api.post('/login', {
@@ -22,18 +23,26 @@ export default class Login extends Component {
       senha: this.state.senha,
     })
 
+      // .then(resposta => console.log(resposta))
       .then((resposta) => {
         if (resposta.status === 200) {
+
           localStorage.setItem('usuario-login', resposta.data.token);
           this.setState({ isLoading: false });
-          if (parseJwt().role === 1) {
+          // console.log(parseJwt().role)
+
+          if (parseJwt().role === '1') {
             this.props.history.push('/adm')
           }
-          else if (parseJwt().role === 2)
+
+          else if (parseJwt().role === '2') {
             this.props.history.push('/medico')
+          }
+
+          else if (parseJwt().role == 3) {
+            this.props.history.push('/paciente')
+          }
         }
-        else if (parseJwt().role === 3)
-          this.props.history.push('/paciente')
       })
       .catch(() => {
         this.setState({
@@ -59,7 +68,7 @@ export default class Login extends Component {
                 <input value={this.state.email} onChange={this.atualizaStateCampo} name='email' placeholder="email" type="email" />
                 <input value={this.state.senha} onChange={this.atualizaStateCampo} name='senha' placeholder="senha" type="password" />
 
-                <p className ="erroMensagem" style={{ color: 'red' }}>{this.state.erroMensagem}</p>
+                <p className="erroMensagem" style={{ color: 'red' }}>{this.state.erroMensagem}</p>
                 {
                   this.state.isLoading === true && (<button className="btn"
                     type="submit"
@@ -69,7 +78,7 @@ export default class Login extends Component {
                 {
                   this.state.isLoading === false && (
                     <button
-                    className='btn'
+                      className='btn'
                       type="submit"
                       disabled={
                         this.state.email === '' || this.state.senha === ''

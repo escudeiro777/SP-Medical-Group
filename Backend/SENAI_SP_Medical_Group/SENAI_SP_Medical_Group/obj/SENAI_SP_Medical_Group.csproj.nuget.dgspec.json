@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj": {}
+    "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj": {}
   },
   "projects": {
-    "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj": {
+    "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
+        "projectUniqueName": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
         "projectName": "SENAI_SP_Medical_Group",
-        "projectPath": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
-        "packagesPath": "C:\\Users\\55119\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\55119\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\obj\\",
+        "projectPath": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group.csproj",
+        "packagesPath": "C:\\Users\\47314899894\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\47314899894\\Desktop\\SP-Medical-Group\\Backend\\SENAI_SP_Medical_Group\\SENAI_SP_Medical_Group\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\55119\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\47314899894\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -87,6 +91,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.12, 5.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -95,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

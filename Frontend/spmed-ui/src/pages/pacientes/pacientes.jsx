@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import api from '../../services/api'
 import '../../assets/css/paciente.css'
 import logo from "../../assets/images/logo.png"
@@ -11,14 +11,13 @@ export default function Pacientes() {
     function buscarMinhas() {
         api('/consultas/minhas', {
             headers: {
-
-                'Authorization': 'Bearer' + localStorage.getItem('usuario-login')
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
         })
 
             .then(resposta => {
                 if (resposta.status === 200) {
-                    setMinhasConsultas(resposta.data.listarMinhas)
+                    setMinhasConsultas(resposta.data)
                 }
             })
 
@@ -56,10 +55,10 @@ export default function Pacientes() {
                                 {
                                     listarMinhas.map((consultas) => {
                                         return (
-                                            <tr key={consulta.idConsulta}>
-                                            <td>{"Paciente: " + (item.idPacienteNavigation.nomePaciente)}</td>
-                                            <td>{"Médico: " + (item.idMedicoNavigation.nomeMedico)}</td>
-                                            <td>{"Descrição: " + (item.descricao)}</td>
+                                            <tr key={consultas.idConsulta}>
+                                            <td>{"Paciente: " + (consultas.idPacienteNavigation.nomePaciente)}</td>
+                                            <td>{"Médico: " + (consultas.idMedicoNavigation.nomeMedico)}</td>
+                                            <td>{"Descrição: " + (consultas.descricao)}</td>
                                             <td>{"Data : " + Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric',
                                                 month: 'numeric',
@@ -67,7 +66,7 @@ export default function Pacientes() {
                                                 hour: 'numeric',
                                                 minute: 'numeric',
                                                 hour12: false
-                                            }).format(new Date(item.dataConsulta))}</td>
+                                            }).format(new Date(consultas.dataConsulta))}</td>
                                         </tr>
                                         )
                                     })

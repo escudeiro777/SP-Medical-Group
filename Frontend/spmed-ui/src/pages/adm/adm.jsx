@@ -1,8 +1,9 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom"
-import api from '../../services/api'
+// import api from '../../services/api'
 import '../../assets/css/adm_cadastro.css'
-import logo from "../../assets/images/logo.png"
+// import logo from "../../assets/images/logo.png"
 import axios from "axios";
 
 export default function Adm() {
@@ -12,7 +13,12 @@ export default function Adm() {
     const [idMedico, setIdMedico] = useState([]);
     const [idPaciente, setIdPaciente] = useState([]);
     const [dataConsulta, setDataConsulta] = useState([]);
+    const navigation = useHistory();
     const [isLoading, setisLoading] = useState(false);
+
+    useEffect(ListarConsultas, []);
+    useEffect(ListarMedicos, []);
+    useEffect(ListarPacientes, []);
 
     function cadastrarConsulta(evento) {
         setisLoading(true);
@@ -43,8 +49,8 @@ export default function Adm() {
             }, 5000));
     }
 
-    function listarConsultas() {
-        axios.post('http://http://192.168.0.112:5000/api/consultas', {
+    function ListarConsultas() {
+        axios('http://http://192.168.0.112:5000/api/consultas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -59,9 +65,7 @@ export default function Adm() {
             .catch(erro => console.log(erro))
     };
 
-    useEffect(listaConsulta, []);
-
-    function listarMedicos() {
+    function ListarMedicos() {
         axios('http://http://192.168.0.112:5000/api/medicos', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -75,28 +79,31 @@ export default function Adm() {
             })
 
             .catch(erro => console.log(erro))
+    }
 
-        useEffect(listarMedicos, []);
 
-        function listarPacientes() {
-            axios('http://http://192.168.0.112:5000/api/pacientes', {
-                headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+    function ListarPacientes() {
+        axios('http://http://192.168.0.112:5000/api/pacientes', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaPaciente(resposta.data)
                 }
             })
 
-                .then(resposta => {
-                    if (resposta.status === 200) {
-                        setListaPaciente(resposta.data)
-                    }
-                })
-
-                .catch(erro => console.log(erro))
-
-            useEffect(listarPacientes, []);
-
-        }
+            .catch(erro => console.log(erro))
     }
+
+    const logout = () => {
+        localStorage.removeItem('usuario-login');
+        navigation.push('/')
+    }
+
+
 
     return (
         <main className=" container ">
@@ -105,26 +112,29 @@ export default function Adm() {
                     <img className="logo " src="./assets/logo.png " alt="Logo Sp Medical Group "></img>
                     <section className="container_form ">
                         <h1>Cadastro de consulta</h1>
+                        <div>
+                            <button className='btn_sair' onClick={logout} >Sair</button>
+                        </div>
                         <form onSubmit={cadastrarConsulta} className="linha_form ">
 
                             <div>
                                 <select
-
                                     className="input"
                                     name="idPaciente"
                                     value={idPaciente}
                                     onChange={(campo) => setIdPaciente(campo.target.value)}
                                 >
-                                    <option value='0'>Selecione o paciente a ser consultadp</option>
+                                    <option value="0">Selecione o paciente a ser consultado</option>
 
-                                    {listaPaciente.map((paciente) => {
+                                    {listaPaciente.map((consultas) => {
                                         return (
-                                            <option key={paciente.idPaciente} value={paciente.idPaciente}>
-                                                {paciente.idPacienteNavigation.nomeMedico}
+                                            <option key={consultas.idPaciente} value={consultas.idPaciente}>
+                                                {consultas.idPacienteNavigation.nomePaciente}
                                             </option>
                                         )
                                     })}
                                 </select>
+                                
                             </div>
 
                             <div>
@@ -135,12 +145,12 @@ export default function Adm() {
                                     value={idMedico}
                                     onChange={(campo) => setIdMedico(campo.target.value)}
                                 >
-                                    <option value='0'>Selecione o médico a consultar</option>
+                                    <option value="0">Selecione o médico a consultar</option>
 
-                                    {listaMedico.map((medico) => {
+                                    {listaMedico.map((consultas) => {
                                         return (
-                                            <option key={medico.idMedico} value={medico.idMedico}>
-                                                {medico.idMedicoNavigation.nomeMedico}
+                                            <option key={consultas.idMedico} value={consultas.idMedico}>
+                                                {(consultas.idMedicoNavigation.nomeMedico)}
                                             </option>
                                         )
                                     })}
@@ -148,12 +158,12 @@ export default function Adm() {
                             </div>
 
                             <div>
-                                <label htmlFor="data">Data da Consulta</label>
+                                <label>Selecione a data da Consulta</label>
                                 <input
                                     type="datetime-local"
                                     name="data"
-                                    value={dataConsul}
-                                    onChange={(campo) => setDataConsul(campo.target.value)}
+                                    value={dataConsulta}
+                                    onChange={(campo) => setDataConsulta(campo.target.value)}
                                 />
                             </div>
 
@@ -189,9 +199,9 @@ export default function Adm() {
                                 {listaConsulta.map((consulta) => {
                                     return (
                                         <tr key={consulta.idConsulta}>
-                                            <td>{"Paciente: " + (item.idPacienteNavigation.nomePaciente)}</td>
-                                            <td>{"Médico: " + (item.idMedicoNavigation.nomeMedico)}</td>
-                                            <td>{"Descrição: " + (item.descricao)}</td>
+                                            <td>{"Paciente: " + (consulta.idPacienteNavigation.nomePaciente)}</td>
+                                            <td>{"Médico: " + (consulta.idMedicoNavigation.nomeMedico)}</td>
+                                            <td>{"Descrição: " + (consulta.descricao)}</td>
                                             <td>{"Data : " + Intl.DateTimeFormat("pt-BR", {
                                                 year: 'numeric',
                                                 month: 'numeric',
@@ -199,7 +209,7 @@ export default function Adm() {
                                                 hour: 'numeric',
                                                 minute: 'numeric',
                                                 hour12: false
-                                            }).format(new Date(item.dataConsulta))}</td>
+                                            }).format(new Date(consulta.dataConsulta))}</td>
                                         </tr>
                                     )
                                 })}
