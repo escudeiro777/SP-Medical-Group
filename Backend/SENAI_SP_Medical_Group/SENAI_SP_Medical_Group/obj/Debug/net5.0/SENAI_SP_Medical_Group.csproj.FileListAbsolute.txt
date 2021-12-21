@@ -300,4 +300,7 @@ C:\Users\55119\Desktop\SP-Medical-Group\Backend\SENAI_SP_Medical_Group\SENAI_SP_
 C:\Users\55119\Desktop\SP-Medical-Group\Backend\SENAI_SP_Medical_Group\SENAI_SP_Medical_Group\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\55119\Desktop\SP-Medical-Group\Backend\SENAI_SP_Medical_Group\SENAI_SP_Medical_Group\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\55119\Desktop\SP-Medical-Group\Backend\SENAI_SP_Medical_Group\SENAI_SP_Medical_Group\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+<<<<<<< HEAD
 C:\Users\47314899894\Desktop\SP-Medical-Group\Backend\SENAI_SP_Medical_Group\SENAI_SP_Medical_Group\bin\Debug\net5.0\SENAI_SP_Medical_Group.StaticWebAssets.xml
+=======
+>>>>>>> 2b697bc9163b4a0c7c9d759f99d196dcfbdac895

@@ -15,7 +15,10 @@ export default class Login extends Component {
     };
   }
   login = (evento) => {
+<<<<<<< HEAD
     // console.log('teste')
+=======
+>>>>>>> 2b697bc9163b4a0c7c9d759f99d196dcfbdac895
     evento.preventDefault();
     this.setState({ erroMensagem: "", isLoading: true })
     api.post('/login', {
@@ -23,6 +26,7 @@ export default class Login extends Component {
       senha: this.state.senha,
     })
 
+<<<<<<< HEAD
       // .then(resposta => console.log(resposta))
       .then((resposta) => {
         if (resposta.status === 200) {
@@ -43,6 +47,20 @@ export default class Login extends Component {
             this.props.history.push('/paciente')
           }
         }
+=======
+      .then((resposta) => {
+        if (resposta.status === 200) {
+          localStorage.setItem('usuario-login', resposta.data.token);
+          this.setState({ isLoading: false });
+          if (parseJwt().role === 1) {
+            this.props.history.push('/adm')
+          }
+          else if (parseJwt().role === 2)
+            this.props.history.push('/medico')
+        }
+        else if (parseJwt().role === 3)
+          this.props.history.push('/paciente')
+>>>>>>> 2b697bc9163b4a0c7c9d759f99d196dcfbdac895
       })
       .catch(() => {
         this.setState({
@@ -68,7 +86,11 @@ export default class Login extends Component {
                 <input value={this.state.email} onChange={this.atualizaStateCampo} name='email' placeholder="email" type="email" />
                 <input value={this.state.senha} onChange={this.atualizaStateCampo} name='senha' placeholder="senha" type="password" />
 
+<<<<<<< HEAD
                 <p className="erroMensagem" style={{ color: 'red' }}>{this.state.erroMensagem}</p>
+=======
+                <p className ="erroMensagem" style={{ color: 'red' }}>{this.state.erroMensagem}</p>
+>>>>>>> 2b697bc9163b4a0c7c9d759f99d196dcfbdac895
                 {
                   this.state.isLoading === true && (<button className="btn"
                     type="submit"
@@ -78,7 +100,11 @@ export default class Login extends Component {
                 {
                   this.state.isLoading === false && (
                     <button
+<<<<<<< HEAD
                       className='btn'
+=======
+                    className='btn'
+>>>>>>> 2b697bc9163b4a0c7c9d759f99d196dcfbdac895
                       type="submit"
                       disabled={
                         this.state.email === '' || this.state.senha === ''
